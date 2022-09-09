@@ -66,13 +66,39 @@ export const isErrorHttp = (code: number): boolean => {
 };
 
 /**
+ * Является ли код ответа успешным
+ * @param code Код ответа
+ */
+export const isSuccessHttp = (code: number): boolean => {
+  return !isErrorHttp(code);
+};
+
+/**
+ * Получить дату без времени
+ * @param date
+ */
+const getDateWithoutTime = (date: Date): string => {
+  if (!date) return '';
+
+  const padTo2Digits = (num) => {
+    return num.toString().padStart(2, '0');
+  };
+
+  return [date.getFullYear(), padTo2Digits(date.getMonth() + 1), padTo2Digits(date.getDate())].join(
+    '-',
+  );
+};
+
+/**
  * Получить массив месяцев между двумя датами
  * @param startDate Дата начала
  * @param endDate Дата конца
  */
-export const getDateRange = (startDate, endDate) => {
+export const getDateRange = (startDate, endDate): string[] => {
+  if (!startDate) return [];
+
   const start = startDate.split('-');
-  const end = endDate.split('-');
+  const end = endDate ? endDate.split('-') : Date().split('-');
   const startYear = parseInt(start[0]);
   const endYear = parseInt(end[0]);
   const dates: string[] = [];
