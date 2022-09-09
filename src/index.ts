@@ -94,7 +94,7 @@ const getDateWithoutTime = (date: Date): string => {
  * @param startDate Дата начала
  * @param endDate Дата конца
  */
-export const getDateRange = (startDate, endDate): string[] => {
+export const getDateRange = (startDate: string, endDate = ''): string[] => {
   if (!startDate) return [];
 
   const start = startDate.split('-');
