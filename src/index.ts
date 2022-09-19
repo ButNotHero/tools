@@ -139,3 +139,15 @@ export const getBool = (value: unknown): boolean => {
   if (value === 'false') return false;
   return false;
 };
+
+/**
+ * Получить данные из токена
+ * @param token Токен
+ */
+export const parseJwt = <T>(token: string): T | null => {
+  try {
+    return JSON.parse(atob(token.split('.')[1]));
+  } catch (e) {
+    return null;
+  }
+};
