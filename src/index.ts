@@ -151,3 +151,16 @@ export const parseJwt = <T>(token: string): T | null => {
     return null;
   }
 };
+
+/**
+ * Получить ширину для установки в inline-style
+ * @param width Ширина
+ * @param unit Единица измерения
+ */
+export const getStyleWidth = (width: number | string, unit = 'px') => {
+  return {
+    width: isNaN(<number>width) ? width : `${width}${unit}`,
+    'min-width': width,
+    'max-width': width,
+  };
+};
