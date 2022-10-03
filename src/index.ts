@@ -1,3 +1,4 @@
+export * from './date';
 import type { ClassModsOptions } from '@/types';
 
 /**
