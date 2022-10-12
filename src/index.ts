@@ -167,3 +167,34 @@ export const getStyleWidth = (width: number | string, unit = 'px') => {
     'max-width': width,
   };
 };
+
+export const windowDefined = (): boolean => typeof window !== 'undefined';
+
+/**
+ * Запретить/Разрешить скролл объекта document
+ * @param forceType Принудительный запрет или разрешения скролла
+ */
+export const toggleBodyScroll = (forceType: 'remove' | 'add' | '' = '') => {
+  if (!windowDefined()) return;
+
+  if (forceType === 'remove') {
+    document.body.style.overflow = 'auto';
+    document.body.classList.remove('scrolling-disabled');
+    return;
+  }
+  if (forceType === 'add') {
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('scrolling-disabled');
+    return;
+  }
+
+  const currentOverflow = document.body.style.overflow;
+
+  if (currentOverflow === 'hidden') {
+    document.body.style.overflow = 'auto';
+  } else {
+    document.body.style.overflow = 'hidden';
+  }
+
+  document.body.classList.toggle('scrolling-disabled');
+};
