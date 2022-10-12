@@ -1,6 +1,8 @@
 export * from './date';
 import type { ClassModsOptions } from '@/types';
 
+export type ClassMods = undefined | string | string[];
+
 /**
  * Получить модификаторы CSS-класса
  * @param prefix Название класса
@@ -9,7 +11,7 @@ import type { ClassModsOptions } from '@/types';
  */
 export const getClassMods = (
   prefix: string,
-  mods: string | string[],
+  mods: ClassMods,
   options: ClassModsOptions = {},
 ): string => {
   if (!mods) return '';
@@ -37,7 +39,7 @@ export const getClassMods = (
  * @param mods Модификаторы
  * @param prefix Префикс
  */
-export const getIconClassMods = (mods: string | string[], prefix = 'i-'): string | string[] => {
+export const getIconClassMods = (mods: ClassMods, prefix = 'i-'): string | string[] => {
   if (!mods) return '';
 
   if (typeof mods === 'string' && mods.substring(0, prefix.length) === prefix)
