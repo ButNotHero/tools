@@ -1,6 +1,6 @@
 import type { MakeThrowExtendedOptions, MakeThrowOptions } from '@/makeThrow/types';
 
-const makeThrow = <T = any>(options: MakeThrowOptions = '') => {
+export const makeThrow = <T = any>(options: MakeThrowOptions = '') => {
   if (typeof options === 'string') {
     throw options;
   }
