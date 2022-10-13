@@ -1,7 +1,9 @@
 export * from './date';
-import type { ClassModsOptions } from '@/types';
+export * from './makeThrow';
 
 export type ClassMods = undefined | string | string[];
+
+import type { ClassModsOptions } from '@/types';
 
 /**
  * Получить модификаторы CSS-класса
